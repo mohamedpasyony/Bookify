@@ -1,0 +1,58 @@
+﻿@model List<Booking>
+@{
+    Layout = "_LayoutSite";
+}
+@if (Model.Count == 0)
+{
+    <div class="row center-lg">
+        <p>
+            You haven't book any room!<br><br>
+            <a href="@Url.Action("Index", "Custmer")#booking" class="btn btn-ghost"> Book Now!</a>
+
+        </p>
+   </div>
+}
+else
+{
+    @foreach (var item in Model)
+    {
+        <div class="row center-lg">
+            <div class="rooms col col-2">
+                @switch (item.Room.RoomType.Name)
+                {
+                    case "Standard Single":
+                        <img src="https://res.cloudinary.com/start-ng/image/upload/v1591638448/Rectangle_42_nastdj.png"
+                             alt="Standard Single Room" class="rooms-img">
+                        break;
+                    case "Standard Double":
+                        <img src="https://res.cloudinary.com/start-ng/image/upload/v1591638449/Rectangle_43_d9eepu.png"
+                             alt="Standard Double Room" class="rooms-img">
+                        break;
+                    case "Deluxe King":
+                        <img src="https://res.cloudinary.com/start-ng/image/upload/v1591638448/Rectangle_44_anerdv.png"
+                             alt="Deluxe King Room" class="rooms-img">
+                        break;
+                    case "Suite":
+                        <img src="https://res.cloudinary.com/start-ng/image/upload/v1591638449/Rectangle_45_mtl458.png"
+                             alt="Suite" class="rooms-img">
+                        break;
+                    default:
+                        <!-- Default case if room type doesn't match -->
+                        break;
+                }
+
+                <h3 class="room-title">@item.Room.RoomType.Name</h3>
+                <p class="room-text">@item.Room.RoomType.Description</p>
+                <h6 class="room-text">Check in Date : @item.CheckInDate</h6>
+                <h6 class="room-text">Check out Date : @item.CheckOutDate</h6>
+
+                <div class="buttons-container">
+                    <a asp-action="GuestBooking" asp-controller="Custmer" class="btn btn-fill">Edit Dates</a>
+                    <a asp-action="Cancel" asp-controller="Custmer" asp-route-id="@item.BookingId" asp-route-roomid="@item.Room.RoomNum" class="btn btn-ghost">Cancel</a>
+                </div>
+            </div>
+
+        </div>
+    }
+
+}

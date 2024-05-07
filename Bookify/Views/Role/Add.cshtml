@@ -1,0 +1,17 @@
+﻿@model IdentityRole
+
+<div class="row">
+    <div class="col-md-4">
+        <h1>Add Role</h1>
+        <form asp-action="Add" method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label style="color:black" for="name" class="control-label">Role Name</label>
+                <input asp-for=Name style="border:1px solid black" type="text" name="name" id="name" class="form-control" value="" />
+            </div>
+            <div class="form-group mt-2">
+                <input asp-action="Add" asp-controller="Role" type="submit" style="background-color:#D4AF37;color:white" value="Add Role" class="btn btn-warning" />
+            </div>
+        </form>
+    </div>
+</div>

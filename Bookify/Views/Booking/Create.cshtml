@@ -1,0 +1,49 @@
+﻿@model BookingVM
+
+
+<form method="post" asp-action="Create" asp-controller="Booking">
+
+    <div class="form-group">
+        <label asp-for="RoomTypeId">select Room</label>
+        <select class="form-control" asp-for="RoomTypeId" asp-items="@(new SelectList(ViewBag.Rooms, "RoomNum", "RoomType.Name")) " style="border:1px solid black">
+            <option></option>
+        </select>
+        <span asp-validation-for="RoomTypeId" class="text-danger"></span>
+    <div>
+
+            <div class="form-group">
+                <label asp-for="RoomTypeId">select Guest</label>
+                <select class="form-control" asp-for="GuestId" asp-items="@(new SelectList(ViewBag.Guests, "Id", "FirstName")) " style="border:1px solid black">
+                    <option></option>
+                </select>
+                <span asp-validation-for="RoomTypeId" class="text-danger"></span>
+                <div>
+        <label asp-for="TotalPrice" class="form-label"></label>
+        <input asp-for="TotalPrice" class="form-control" />
+        <span asp-validation-for="TotalPrice" class="text-danger"></span>
+
+    </div>
+    <div id="date-picker-example" class="md-form md-outline input-with-post-icon datepicker" inline="true">
+        <input asp-for="CheckInDate" placeholder="Select date" type="date" id="example" class="form-control">
+        <label asp-for="CheckInDate">CheckInDate</label>
+        <i class="fas fa-calendar input-prefix"></i>
+        <span asp-validation-for="CheckInDate" class="text-danger"></span>
+    </div>
+    <div id="date-picker-example" class="md-form md-outline input-with-post-icon datepicker" inline="true">
+        <input asp-for="CheckOutDate" placeholder="Select date" type="date" id="example" class="form-control">
+        <label asp-for="CheckOutDate">CheckInDate</label>
+        <i class="fas fa-calendar input-prefix"></i>
+        <span asp-validation-for="CheckOutDate" class="text-danger"></span>
+    </div>
+   
+        <br>
+        <br>
+        <input type="submit" class="btn" value="add" style="background-color:#D4AF37;color:white"></input>
+
+
+
+</form>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>

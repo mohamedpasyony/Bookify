@@ -1,0 +1,70 @@
+﻿@model List<Booking>
+
+
+
+<div class="container-fluid py-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="card my-4">
+                <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                    <div style="background-color:#D4AF37;" class=" border-radius-lg pt-4 pb-3">
+                        <h6 class="text-white text-capitalize ps-3">Bookings</h6>
+
+                    </div>
+                    <a asp-action="Create" asp-controller="Booking" class="text-white btn  text-xs mt-3" style="background-color:#D4AF37;color:white" data-toggle="tooltip" data-original-title="Edit user">
+                        Add New Booking
+                    </a>
+                </div>
+                <div class="card-body px-0 pb-2">
+                    <div class="table-responsive p-0">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        checkin
+                                    </th>
+                                    <th>
+                                        checkout
+                                    </th>
+                                    <th>
+                                        TotalPrice
+                                    </th>
+                                    <th>Room Type</th>
+                                    <th>Guest Name</th>
+                                    <th>Manage</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @item.CheckInDate
+                                        </td>
+                                        <td>
+                                            @item.CheckOutDate
+                                        </td>
+                                        <td>
+                                            @item.TotalPrice
+                                        </td>
+                                        <td>
+                                            @item.Room.RoomType.Name
+                                        </td>
+                                        <td>
+                                            @item.User.FirstName  @item.User.LastName
+                                        </td>
+                                        <td>
+                                            <a asp-action="Edit" asp-route-id="@item.BookingId">Edit</a> |
+                                            <a asp-action="Details" asp-route-id="@item.BookingId">Details</a> |
+                                            <a asp-action="Delete" asp-route-id="@item.BookingId" asp-route-roomid="@item.RoomNum">Delete</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,39 @@
+﻿@model Room
+@{
+    Layout = "_LayoutSite";
+}
+<div class="row center-lg my-3">
+    <div class="col-10">
+        <div class="card " >
+            @switch (Model.RoomType.Name)
+            {
+                case "Standard Single":
+                    <img src="https://res.cloudinary.com/start-ng/image/upload/v1591638448/Rectangle_42_nastdj.png"
+                         alt="Standard Single Room" class="rooms-img card-img-top">
+                    break;
+                case "Standard Double":
+                    <img src="https://res.cloudinary.com/start-ng/image/upload/v1591638449/Rectangle_43_d9eepu.png"
+                         alt="Standard Double Room" class="rooms-img card-img-top">
+                    break;
+                case "Deluxe King":
+                    <img src="https://res.cloudinary.com/start-ng/image/upload/v1591638448/Rectangle_44_anerdv.png"
+                         alt="Deluxe King Room" class="rooms-img card-img-top">
+                    break;
+                case "Suite":
+                    <img src="https://res.cloudinary.com/start-ng/image/upload/v1591638449/Rectangle_45_mtl458.png"
+                         alt="Suite" class="rooms-img card-img-top">
+                    break;
+                default:
+                    <!-- Default case if room type doesn't match -->
+                    break;
+            }
+
+           
+            <div class="card-body">
+                <h5 class="card-title">@Model.RoomType.Name</h5>
+                <p class="card-text">@Model.RoomType.Description</p>
+                <a asp-action="GuestBooking" asp-controller="Custmer" asp-route-RoomNum="@Model.RoomNum" class="btn btn-fill">Book Now</a>
+            </div>
+        </div>
+    </div>
+</div>

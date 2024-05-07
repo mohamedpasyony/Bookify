@@ -1,0 +1,25 @@
+﻿ @model BookingVM
+
+
+@{
+    Layout = "_LayoutSite";
+}
+
+<form style="margin-left:200px" method="post" asp-action="GuestBooking" asp-controller="Custmer" class="jumbotron-form ">
+    <!-- Put the form here -->
+    <label for="arrival">Check in date</label>
+    <input asp-for="CheckInDate" type="date"   placeholder="Arrival Date"><br>
+    <span style="color:red" asp-validation-for="CheckInDate"></span>
+    <label  for="departure">Check out date</label>
+    <input asp-for="CheckOutDate" type="date"   placeholder="Departure Date" ><br>
+    <span style ="color:red" asp-validation-for="CheckOutDate"></span>
+    <input asp-for=GuestId type="hidden" value="@ViewBag.GuestId"/>
+    <input type="hidden" asp-for="RoomTypeId" value="@ViewBag.RoomNum" />
+    <!-- If you want to change it -->
+    <input type="hidden" asp-for="TotalPrice" value=70 />
+    <button type="submit" class="rates">Book</button>
+</form>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>

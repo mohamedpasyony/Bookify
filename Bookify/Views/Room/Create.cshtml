@@ -1,0 +1,22 @@
+﻿@model RoomVM
+
+
+<form  method="post" asp-action="Create" asp-controller="Room">
+    
+    <div class="form-group">
+        <label asp-for="RoomTypeId">select Room Type</label>
+        <select class="form-control" asp-for="RoomTypeId" asp-items="@(new SelectList(ViewBag.roomTypes, "RoomTypeId", "Name")) " style="border:1px solid black">
+            <option></option>
+        </select>
+        <span asp-validation-for="RoomTypeId" class="text-danger"></span>
+
+        <br>
+        <br>
+        <input type="submit" class="btn" value="add" style="background-color:#D4AF37;color:white"></input>
+            
+            
+       
+</form>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>

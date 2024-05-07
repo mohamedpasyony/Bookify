@@ -1,0 +1,20 @@
+﻿@model GusetRoleVM
+
+<form method="post" asp-action="AddRole" asp-controller="Guest">
+    <input type="hidden" asp-for="GuestId" />
+
+    <div class="form-group">
+        <label asp-for="RoleName">select Room Type</label>
+        <select class="form-control" asp-for="RoleName" asp-items="@(new SelectList(Model.roleNames)) " style="border:1px solid black">
+            <option></option>
+        </select>
+        <span asp-validation-for="RoleName" class="text-danger"></span>
+
+        <br>
+        <br>
+        <input type="submit" class="btn" value="add" style="background-color:#D4AF37;color:white"></input>
+
+
+
+</form>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
